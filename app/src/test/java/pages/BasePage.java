@@ -1,12 +1,14 @@
 package pages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
@@ -89,9 +91,46 @@ public class BasePage {
      * Método para maximizar la ventana
      * https://www.selenium.dev/documentation/webdriver/interactions/windows/
      */
-
     public static void maxBrowser() {
         driver.manage().window().maximize();
     }
+
+    /**
+     * Método para escribir en un Input, pero que primero borra cualquier
+     * información previa.
+     */
+    public void write(String locator, String keysToSend) {
+        Find(locator).clear();
+        Find(locator).sendKeys(keysToSend);
+    }
+
+    /**
+     * Seleccinar un DropDown por el valor del TEXTO (String)
+     */
+    public void selectDropdownValue(String locator, String value){
+        Select dropdown = new Select(Find(locator));
+
+        dropdown.selectByValue(value);
+    }
+
+    /**
+     * Seleccinar un DropDown por el valor del INDEX (Integer), comenzando en CERO.
+     */
+    public void selectDropdownIndex(String locator, Integer index){
+        Select dropdown = new Select(Find(locator));
+
+        dropdown.selectByIndex(index);
+    }
+
+    /**
+     * Cuenta el número de elementos (integer) en un DropDown
+     */
+    public int dropdownSize(String locator){
+        Select dropdown = new Select(Find(locator));
+        List<WebElement> dropdownOptions = dropdown.getOptions();
+
+        return dropdownOptions.size();
+    }
+
 
 }
