@@ -5,3 +5,4 @@ Feature: Navigation Bar
 
     Scenario: I can access the subpages trough the navigation bar
         Given I navigate to www.freerangetesters.com
+        When I go to every section using the navigation bar

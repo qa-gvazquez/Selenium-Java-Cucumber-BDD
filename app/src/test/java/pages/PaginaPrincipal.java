@@ -3,7 +3,7 @@ package pages;
 public class PaginaPrincipal extends BasePage {
 
     final String sut = "https://www.freerangetesters.com"; // Final, no se puede cambiar el valor.
-    final String botonCursos = "(//a[contains(.,'Cursos')])[1]";
+    final String botonCursos = "//a[normalize-space()='Cursos' and @href]";
 
     public PaginaPrincipal() {
         super(driver);
@@ -15,9 +15,14 @@ public class PaginaPrincipal extends BasePage {
     public void navigateToFreeRangeTesters() {
         navigateTo(sut);
         maxBrowser();
-        clickElement(botonCursos);
     }
 
+    /**
+     * Ejecuta la acción de hacer click en los botones de la barra de navegación.
+     */
+    public void clickOnLinksNavigationBar(){
+        clickElement(botonCursos);
+    }
 
 
 }
