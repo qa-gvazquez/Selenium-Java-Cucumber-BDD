@@ -1,6 +1,7 @@
 package pages;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -88,7 +89,7 @@ public class BasePage {
     }
 
     /**
-     * Método para maximizar la ventana
+     * Método para maximizar la ventana del navegador.
      * https://www.selenium.dev/documentation/webdriver/interactions/windows/
      */
     public static void maxBrowser() {
@@ -107,7 +108,7 @@ public class BasePage {
     /**
      * Seleccinar un DropDown por el valor del TEXTO (String)
      */
-    public void selectDropdownValue(String locator, String value){
+    public void selectDropdownValue(String locator, String value) {
         Select dropdown = new Select(Find(locator));
 
         dropdown.selectByValue(value);
@@ -116,7 +117,7 @@ public class BasePage {
     /**
      * Seleccinar un DropDown por el valor del INDEX (Integer), comenzando en CERO.
      */
-    public void selectDropdownIndex(String locator, Integer index){
+    public void selectDropdownIndex(String locator, Integer index) {
         Select dropdown = new Select(Find(locator));
 
         dropdown.selectByIndex(index);
@@ -125,12 +126,27 @@ public class BasePage {
     /**
      * Cuenta el número de elementos (integer) en un DropDown
      */
-    public int dropdownSize(String locator){
+    public int dropdownSize(String locator) {
         Select dropdown = new Select(Find(locator));
         List<WebElement> dropdownOptions = dropdown.getOptions();
 
         return dropdownOptions.size();
     }
 
-    //Cierre de la clase Base, que contiene los métodos de las acciones.
+    /**
+     * Método que devuelve el TEXTO de todos los valores dentro de un DropDown.
+     */
+    public List<String> getDropdownValues(String locator) {
+        Select dropdown = new Select(Find(locator));
+
+        List<WebElement> dropdownOptions = dropdown.getOptions();
+        List<String> values = new ArrayList<>();
+        for (WebElement option : dropdownOptions) {
+            values.add(option.getText());
+        }
+
+        return values;
+    }
+
+    // Cierre de la clase Base, que contiene los métodos de las acciones.
 }

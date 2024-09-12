@@ -26,6 +26,12 @@ public class PaginaPrincipal extends BasePage {
      */
     private String botonCursos = "//a[normalize-space()='%s' and @href]";
 
+    /**
+     * Localizador del Scenario 3 - Users can select a plan when signing up.
+     * Es un botón de la página principal con el texto 'Elegir Plan'
+     */
+    private String elegirUnPlanButton = "//a[normalize-space()='Elegir Plan' and @href]";
+
     // Constructor de la clase PADRE BasePage.
     public PaginaPrincipal() {
         super(driver);
@@ -50,6 +56,13 @@ public class PaginaPrincipal extends BasePage {
         String xpathSection = String.format(botonCursos, section);
 
         clickElement(xpathSection);
+    }
+
+    /**
+     * Dar Click en el botón 'Elegir Plan' de la página principal del SUT.
+     */
+    public void clickOnElegirPlanButton() {
+        clickElement(elegirUnPlanButton);
     }
 
     //Cierre de la clase que modela la página principal https://www.freerangetesters.com 

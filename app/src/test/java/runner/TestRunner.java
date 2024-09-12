@@ -14,7 +14,8 @@ import pages.BasePage;
 
 public class TestRunner {
         @AfterClass
-        public static void cleanBrowser(){
+        public static void cleanBrowser() throws InterruptedException{
+                Thread.sleep(1000); // Se agregó temporalmenta para VER que efectivamente abre la página correcta.
                 BasePage.closeBrowser();
         }
 }
