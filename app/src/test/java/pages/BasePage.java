@@ -132,5 +132,5 @@ public class BasePage {
         return dropdownOptions.size();
     }
 
-
+    //Cierre de la clase Base, que contiene los métodos de las acciones.
 }
