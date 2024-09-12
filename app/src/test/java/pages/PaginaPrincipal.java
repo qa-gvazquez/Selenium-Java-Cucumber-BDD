@@ -1,16 +1,23 @@
 package pages;
 
-public class PaginaPrincipal extends BasePage{
+public class PaginaPrincipal extends BasePage {
+
+    final String sut = "https://www.freerangetesters.com"; // Final, no se puede cambiar el valor.
+    private String botonCursos = "(//a[contains(.,'Cursos')])[1]";
 
     public PaginaPrincipal() {
         super(driver);
     }
 
     /**
-     * Método para navegar a la URL del SUT
+     * Modelando la acción navegar a la URL del SUT y dar click en un botón.
      */
-    public void navigateToFreeRangeTesters(){
-        navigateTo("https://www.freerangetesters.com");
+    public void navigateToFreeRangeTesters() {
+        navigateTo(sut);
+        maxBrowser();
+        clickElement(botonCursos);
     }
+
+
 
 }
