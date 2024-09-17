@@ -58,7 +58,7 @@ public class FreeRangeSteps {
 
         Assert.assertEquals(listaEsperada, lista);
     }
-
+/* 
     public void EjemploAssertions() {
         // assertEquals - Verifica que dos valores sean iguales.
 
@@ -92,5 +92,5 @@ public class FreeRangeSteps {
 
         soft.assertAll();
     }
-
+*/
 }

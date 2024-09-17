@@ -6,5 +6,6 @@
 
     
     "java.compile.nullAnalysis.mode": "disabled",
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "livePreview.defaultPreviewPath": "/app/build/reports/tests/test/index.html"
 }

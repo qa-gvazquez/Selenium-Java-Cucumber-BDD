@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     // Use JUnit Jupiter for testing.
-    testImplementation libs.junit.jupiter
+    // testImplementation libs.junit.jupiter
 
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     implementation 'org.seleniumhq.selenium:selenium-java:4.24.0'
@@ -51,12 +51,9 @@ java {
         languageVersion = JavaLanguageVersion.of(21)
     }
 }
-/*
-application {
-    // Define the main class for the application.
-    mainClass = 'gradleclone.App'
-}
-*/
+
 tasks.named('test') {
-    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+    systemProperty "cucumberOptions", System.getProperty("cucumber.options")
+    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+  //  systemProperties System.getProperties();
 }
