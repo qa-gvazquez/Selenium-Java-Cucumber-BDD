@@ -39,18 +39,18 @@ public class FreeRangeSteps {
      * Intancia el método 'clickOnElegirPlanButto' del
      * POM - PaginaPrincipal.
      */
-    @When("I select Elegir Plan")
+    @When("^(?:I|The user|The client) select? Elegir Plan$") 
     public void selectElegirPlan() {
         landingPage.clickOnElegirPlanButton();
     }
 
-    @And("select Introducción al Testing")
+    @And("^(?:I|The user|The client) select? Introducción al Testing$")
     public void navigateToIntro() {
         cursosPage.clickFundamentosTestingLink();
         fundamentosPage.introduccionTestingLink();
     }
 
-    @Then("I can validate the options in the checkout page")
+    @Then("^(?:I|The user|The client) can validate the options in the checkout page$")
     public void validateCheckoutPlans() {
         List<String> lista = registro.returnPlanDropdownValues();
         List<String> listaEsperada = Arrays.asList("Academia: $16.99 / mes • 13 productos",

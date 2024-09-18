@@ -21,9 +21,9 @@ Feature: Navigation Bar
     @Courses
     Scenario: Courses are presented correctly to potential customers
         When I go to Cursos using the navigation bar
-        And select Introducción al Testing
+        And I select Introducción al Testing
 
     @Plans @Courses
     Scenario: Users can select a plan when signing up
-        When I select Elegir Plan
-        Then I can validate the options in the checkout page
+        When The client select Elegir Plan
+        Then The user can validate the options in the checkout page
