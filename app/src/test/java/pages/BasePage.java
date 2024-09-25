@@ -26,6 +26,7 @@ public class BasePage {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     /**
      * Instancia del WebDriver, usando Selenium 4.24 sin necesidad de un WebDriver.
+     * Se debe crear un constructor en cada clase que herede la BasePage.
      */
     static {
         driver = new ChromeDriver();
@@ -45,6 +46,7 @@ public class BasePage {
      */
     public static void navigateTo(String url) {
         driver.navigate().to(url);
+        driver.manage().window().maximize();
     }
 
     /**
@@ -69,7 +71,7 @@ public class BasePage {
 
     /**
      * Tercera función - Acción de dar Click en un elemento.
-     * Obsérvese que intancía la segunda función 'Find' y le envía el
+     * Obsérvese que instancía la segunda función 'Find' y le envía el
      * parámetro 'locator', para así utilizar la espera pre-definida.
      * 
      * Usaremos este método para dar Click en botones, en lugar del comando de
@@ -99,11 +101,40 @@ public class BasePage {
     /**
      * Método para escribir en un Input, pero que primero borra cualquier
      * información previa.
+     * 
+     * @param locator    - Es el localizador del input donde vamos a escribir.
+     * @param keysToSend - El texto que queremos enviar.
      */
     public void write(String locator, String keysToSend) {
         Find(locator).clear();
         Find(locator).sendKeys(keysToSend);
     }
+
+    /**
+     * Método que busca un localizador por su LinkText, y le da Clic.
+     * Útil, pero no recomendado. No es una estrategia robusta.
+     * 
+     * @param linkText (String) - Texto que aparece en el enlace.
+     */
+    public void goToLinkText(String linkText) {
+        driver.findElement(By.linkText(linkText)).click();
+    }
+
+    /**
+     * Método que busca un localizador por su INDEX, y le da Clic.
+     * Realiza una búsqueda de WebElement mediante XPath, y los enlista en 'results'
+     * Elige el WebElement del Index que le indiquemos.
+     * Le da Clic.
+     * 
+     * @param locator (String) - Estrategia de localización-
+     * @param index (int) - Número del índice del WebElement que nos interesa.
+     * @throws InterruptedException 
+     */
+    public void selectNthElement(String locator, int index){
+        List<WebElement> results = driver.findElements(By.xpath(locator));
+        results.get(index).click();
+    }
+
 
     /**
      * Seleccinar un DropDown por el valor del TEXTO (String)
@@ -134,6 +165,17 @@ public class BasePage {
     }
 
     /**
+     * Método que devuelve el TEXTO de un WebElement, a partir del localizador.
+     * @param locator (String)
+     * @return TEXTO de ese locator
+     * 
+     */
+    public String textFromElement(String locator){
+        String elementText = Find(locator).getText();
+        return elementText; 
+    }
+
+    /**
      * Método que devuelve el TEXTO de todos los valores dentro de un DropDown.
      */
     public List<String> getDropdownValues(String locator) {
@@ -147,6 +189,8 @@ public class BasePage {
 
         return values;
     }
+
+
 
     // Cierre de la clase Base, que contiene los métodos de las acciones.
 }
