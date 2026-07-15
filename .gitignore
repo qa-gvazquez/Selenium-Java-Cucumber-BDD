@@ -6,3 +6,5 @@ build
 
 # Ignore the specifics of Visual Studio Code IDE, use what's best for you.
 .vscode
+
+.idea

@@ -111,7 +111,7 @@ public class BasePage {
     }
 
     /**
-     * Método que busca un localizador por su LinkText, y le da Clic.
+     * Métohdo que busca un localizador por su LinkText, y le da Clic.
      * Útil, pero no recomendado. No es una estrategia robusta.
      * 
      * @param linkText (String) - Texto que aparece en el enlace.
@@ -121,7 +121,7 @@ public class BasePage {
     }
 
     /**
-     * Método que busca un localizador por su INDEX, y le da Clic.
+     * Méthodo que busca un localizador por su INDEX, y le da Clic.
      * Realiza una búsqueda de WebElement mediante XPath, y los enlista en 'results'
      * Elige el WebElement del Index que le indiquemos.
      * Le da Clic.
@@ -165,7 +165,7 @@ public class BasePage {
     }
 
     /**
-     * Método que devuelve el TEXTO de un WebElement, a partir del localizador.
+     * Méthodo que devuelve el TEXTO de un WebElement, a partir del localizador.
      * @param locator (String)
      * @return TEXTO de ese locator
      * 
@@ -176,7 +176,7 @@ public class BasePage {
     }
 
     /**
-     * Método que devuelve el TEXTO de todos los valores dentro de un DropDown.
+     * Méthodo que devuelve el TEXTO de todos los valores dentro de un DropDown.
      */
     public List<String> getDropdownValues(String locator) {
         Select dropdown = new Select(Find(locator));
